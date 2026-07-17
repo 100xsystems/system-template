@@ -1,31 +1,20 @@
 /**
- * Lesson 1: Example behavioral tests
+ * Lesson 1: [Lesson Name]
  *
- * These tests verify the user's implementation actually works.
- * They're written in Vitest (TypeScript) and run in an isolated
- * temp directory by the 100xSystems CLI test-runner.
+ * Behavioral tests that verify the user's implementation.
+ * Uses @100xsystems/test-suite-typescript for shared test helpers.
  */
-import { describe, it, expect } from 'vitest';
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+import { describe, it, expect, fileExists, readJson, expectBuildSucceeds } from '@100xsystems/test-suite-typescript';
 
-const PROJECT = process.cwd();
+describe('Lesson 1: [Lesson Name]', () => {
 
-describe('Lesson 1: Getting Started', () => {
-  it('has a package.json (lesson 1)', () => {
-    const pkgPath = path.join(PROJECT, 'package.json');
-    expect(fs.existsSync(pkgPath)).toBe(true);
-    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+  it('has a package.json with build script', () => {
+    expect(fileExists('package.json')).toBe(true);
+    const pkg = readJson('package.json');
     expect(pkg.scripts?.build).toBeDefined();
   });
 
-  it('builds successfully (lesson 1)', () => {
-    const result = execSync('npm run build', {
-      cwd: PROJECT,
-      encoding: 'utf-8',
-      timeout: 60000,
-    });
-    expect(result).toBeDefined();
+  it('builds successfully with npm run build', () => {
+    expectBuildSucceeds();
   });
 });
