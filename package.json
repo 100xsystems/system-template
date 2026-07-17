@@ -1,0 +1,14 @@
+{
+  "name": "system-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Template for creating new 100xSystems learning systems",
+  "type": "module",
+  "scripts": {
+    "test": "npx vitest run",
+    "test:watch": "npx vitest"
+  },
+  "devDependencies": {
+    "@100xsystems/test-suite-typescript": "^0.1.0"
+  }
+}
